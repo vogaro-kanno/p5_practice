@@ -1,19 +1,19 @@
+var x, y, r
+
 function setup() {
-  createCanvas(480, 240)
-  background('skyblue')
+  createCanvas(480, 240);
   noStroke()
-
-  fill(255, 0, 0, 127)
-  rect(0, 0, 100, 100)
-
-  push()
-  // translate(10, 10)
-  // rotate(PI/4)
-  scale(2, 0.5)
-  fill(0, 0, 255, 127)
-  rect(0, 0, 100, 100)
-  pop()
+  background('skyblue')
 }
 
 function draw() {
+  x = random(width)
+  y = random(height)
+  if (random() > 0.9) {
+    r = random(50, 80)
+  } else {
+    r = random(10, 30)
+  }
+  fill(255, 255, 255, random(30, 250))
+  ellipse(x, y, r, r)
 }
