@@ -1,19 +1,20 @@
-var x, y, r
+var angle = 0
+var r = 30
 
 function setup() {
   createCanvas(480, 240);
-  noStroke()
   background('skyblue')
+  noStroke()
 }
 
 function draw() {
-  x = random(width)
-  y = random(height)
-  if (random() > 0.9) {
-    r = random(50, 80)
-  } else {
-    r = random(10, 30)
-  }
-  fill(255, 255, 255, random(30, 250))
-  ellipse(x, y, r, r)
+  push()
+  translate(width/2, height/2)
+  x = sin(radians(angle)) * r
+  y = cos(radians(angle)) * r
+  ellipse(x, y, 10, 10)
+  pop()
+
+  angle += 2
+  r += 0.1
 }
