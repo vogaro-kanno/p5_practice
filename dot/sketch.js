@@ -1,4 +1,5 @@
 let circles = [];
+let numCircles = 100;
 
 function setup() {
   createCanvas(800, 800);
@@ -6,8 +7,8 @@ function setup() {
   noStroke();
 
   // 初期状態で円を生成
-  for (let i = 0; i < 100; i++) {
-    circles.push(new Circle(random(width), random(height), random(10, 30), random(360)));
+  for (let i = 0; i < numCircles; i++) {
+    circles.push(new Circle(random(width/2-50, width/2+50), random(height/2-50, height/2+50), random(10, 30), random(360)));
   }
 }
 
@@ -29,13 +30,16 @@ class Circle {
     this.size = size;
     this.hue = hue;
     this.angle = random(TWO_PI);
-    this.speed = random(0.5, 2);
+    this.speed = random(0.5, 1.5);
   }
 
   update() {
-    // 円がふわふわと動くように位置を更新
+    // 中心から外に向かって拡散するように位置を更新
     this.x += cos(this.angle) * this.speed;
     this.y += sin(this.angle) * this.speed;
+
+    // 少しずつ大きくする
+    this.size += 0.05;
 
     // 画面の端に到達したら反対側に再配置
     if (this.x > width) this.x = 0;
@@ -45,7 +49,7 @@ class Circle {
   }
 
   display() {
-    fill(this.hue, 100, 100, 0.8); // 色相、彩度、明度、透明度
+    fill(this.hue, 80, 80, 0.6); // 色相、彩度、明度、透明度
     ellipse(this.x, this.y, this.size, this.size);
   }
 }
