@@ -3,7 +3,7 @@ let maxCircles = 50; // 最大円の数
 let framesPerCircle = 5; // 新しい円を追加するフレームの間隔
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(windowWidth, windowHeight);
   colorMode(HSB, 360, 100, 100); // HSB色空間を使用
   noStroke();
 }
